@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import createStore from './redux/createStore';
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
+import GistList from './components/GistList';
+import { useRouteMatch, Route } from 'react-router-dom';
+import { fetchGists } from './redux/slices/gistsSlice';
+import Routes from './Routes'
+
+const store = createStore();
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        {/* <GistList /> */}
+        <Routes />
+      </Provider>
     </div>
   );
 }
